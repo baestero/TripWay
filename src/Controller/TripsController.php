@@ -17,6 +17,7 @@ class TripsController extends AppController
         ];
         $trips = $this->paginate($this->Trips);
 
+
         $this->set(compact('trips'));
     }
 
@@ -65,14 +66,22 @@ class TripsController extends AppController
         $trip = $this->Trips->get($id, [
             'contain' => [],
         ]);
+
+
+        if ($trip->status == 'inactive') {
+            $this->Flash->error(__('Viagem encerrada não pode ser alterada.'));
+            return $this->redirect(['action' => 'index']);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $trip = $this->Trips->patchEntity($trip, $this->request->getData());
+
             if ($this->Trips->save($trip)) {
-                $this->Flash->success(__('The trip has been saved.'));
+                $this->Flash->success(__('Itinerário salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The trip could not be saved. Please, try again.'));
+            $this->Flash->error(__('Erro ao salvar itinerário.'));
         }
         $drivers = $this->Trips->Drivers->find('list', ['limit' => 200])->all();
         $vehicles = $this->Trips->Vehicles->find('list', ['limit' => 200])->all();
@@ -102,7 +111,7 @@ class TripsController extends AppController
         try {
             $service->finishTrip($id);
 
-            $this->Flash->success('Viagem finalizada com sucesso');
+            $this->Flash->success('Viagem encerrada com sucesso');
         } catch (RuntimeException $e) {
             $this->Flash->error($e->getMessage());
         }

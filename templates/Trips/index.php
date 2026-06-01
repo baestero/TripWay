@@ -43,11 +43,23 @@
                                 ? $trip->finished_at->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i')
                                 : '' ?>
                         </td>
-                        <td><?= h($trip->status === 'active' ? 'em andamento' : 'finalizada') ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $trip->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $trip->id]) ?>
-                            <?= $this->Form->postLink(__('Encerrar'), ['action' => 'finishTrip', $trip->id], ['confirm' => __('Realmente deseja encerrar essa viagem? ', $trip->id)]) ?>
+                        <td><?= h($trip->status === 'active' ? 'em andamento' : 'encerrada') ?></td>
+                        <td class="actions actionsTrips">
+                            <?= $this->Html->link(
+                                __('Editar'),
+                                ['action' => 'edit', $trip->id],
+                                [
+                                    'class' => 'actions-editar'
+                                ]
+                            ) ?>
+                            <?= $this->Form->postLink(
+                                __('Encerrar'),
+                                ['action' => 'finishTrip', $trip->id],
+                                [
+                                    'class' => 'actions-encerrar',
+                                    'confirm' => __('Realmente deseja encerrar essa viagem?')
+                                ]
+                            ) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -66,29 +66,27 @@
                         <table>
                             <tr>
                                 <th><?= __('Código') ?></th>
-                                <th><?= __('Placa') ?></th>
-                                <th><?= __('Modelo') ?></th>
-                                <th><?= __('Marca') ?></th>
-                                <th><?= __('Ano') ?></th>
+                                <th><?= __('Cidade de Origem') ?></th>
+                                <th><?= __('Estaod de  Origem') ?></th>
+                                <th><?= __('Cidade de Destino') ?></th>
+                                <th><?= __('Estado de Destino') ?></th>
+                                <th><?= __('Iniciada') ?></th>
+                                <th><?= __('Finalizada') ?></th>
                                 <th><?= __('Status') ?></th>
                                 <th class="actions"><?= __('Ações') ?></th>
                             </tr>
                             <?php foreach ($client->trips as $trips) : ?>
                                 <tr>
                                     <td><?= h($trips->id) ?></td>
-                                    <td><?= h($trips->driver_id) ?></td>
-                                    <td><?= h($trips->vehicle_id) ?></td>
-                                    <td><?= h($trips->client_id) ?></td>
                                     <td><?= h($trips->origin_city) ?></td>
                                     <td><?= h($trips->origin_state) ?></td>
                                     <td><?= h($trips->destination_city) ?></td>
                                     <td><?= h($trips->destination_state) ?></td>
                                     <td><?= h($trips->start_at) ?></td>
                                     <td><?= h($trips->finished_at) ?></td>
-                                    <td><?= h($trips->status) ?></td>
+                                    <td><?= h($trips->status === 'active' ? 'em andamento' : 'encerrada') ?></td>
                                     <td class="actions">
-                                        <?= $this->Html->link(__('View'), ['controller' => 'Trips', 'action' => 'view', $trips->id]) ?>
-                                        <?= $this->Html->link(__('Edit'), ['controller' => 'Trips', 'action' => 'edit', $trips->id]) ?>
+                                        <?= $this->Html->link(__('Visualizar'), ['controller' => 'Trips', 'action' => 'view', $trips->id]) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

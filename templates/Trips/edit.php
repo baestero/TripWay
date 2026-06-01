@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Trip $trip
@@ -10,34 +11,34 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $trip->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $trip->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Trips'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <h4 class="heading"><?= __('Ações') ?></h4>
+            <?= $this->Html->link(__('Listar Viagens'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
         <div class="trips form content">
             <?= $this->Form->create($trip) ?>
             <fieldset>
-                <legend><?= __('Edit Trip') ?></legend>
+                <legend><?= __('Alterar Itinerário') ?></legend>
                 <?php
-                    echo $this->Form->control('driver_id', ['options' => $drivers]);
-                    echo $this->Form->control('vehicle_id', ['options' => $vehicles]);
-                    echo $this->Form->control('client_id', ['options' => $clients]);
-                    echo $this->Form->control('origin_city');
-                    echo $this->Form->control('origin_state');
-                    echo $this->Form->control('destination_city');
-                    echo $this->Form->control('destination_state');
-                    echo $this->Form->control('start_at');
-                    echo $this->Form->control('finished_at');
-                    echo $this->Form->control('status');
+                echo $this->Form->control('origin_city', [
+                    'label' => 'Cidade de Origem'
+                ]);
+
+                echo $this->Form->control('origin_state', [
+                    'label' => 'Estado de Origem'
+                ]);
+
+                echo $this->Form->control('destination_city', [
+                    'label' => 'Cidade de Destino'
+                ]);
+
+                echo $this->Form->control('destination_state', [
+                    'label' => 'Estado de Destino'
+                ]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Salvar')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

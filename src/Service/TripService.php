@@ -80,14 +80,14 @@ class TripService
     $trip = $this->Trips->get($tripId);
 
     if ($trip->status != 'active') {
-      throw new RuntimeException('Viagem já está finalizada');
+      throw new RuntimeException('Viagem já está encerrada');
     }
 
     $trip->status = 'inactive';
     $trip->finished_at = date('Y-m-d H:i:s');
 
     if (!$this->Trips->save($trip)) {
-      throw new RuntimeException('Não foi possível finalizar viagem');
+      throw new RuntimeException('Não foi possível encerrar viagem');
     }
 
     return $trip;
