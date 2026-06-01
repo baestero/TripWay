@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -64,25 +65,33 @@ class DriversTable extends Table
             ->scalar('name')
             ->maxLength('name', 50)
             ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->notEmptyString('name', 'O nome é Obrigatório');
 
         $validator
             ->scalar('cpf')
-            ->maxLength('cpf', 50)
+            ->maxLength('cpf', 11)
             ->requirePresence('cpf', 'create')
-            ->notEmptyString('cpf')
-            ->add('cpf', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->notEmptyString('cpf', 'O CPF é obrigatório')
+            ->add('cpf', 'validFormat', [
+                'rule' => ['custom', '/^\d{11}$/'],
+                'message' => 'O CPF deve conter 11 dígitos.',
+            ]);
 
         $validator
             ->scalar('phone')
             ->maxLength('phone', 20)
             ->requirePresence('phone', 'create')
-            ->notEmptyString('phone');
+            ->notEmptyString('phone', 'O celular é obrigatório')
+            ->add('phone', 'validFormat', [
+                'rule' => ['custom', '/^\d{10,11}$/'],
+                'message' => 'O celular deve conter 10 ou 11 dígitos.'
+            ]);
 
         $validator
             ->scalar('status')
             ->maxLength('status', 20)
             ->notEmptyString('status');
+
 
         return $validator;
     }
@@ -96,7 +105,7 @@ class DriversTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['cpf']), ['errorField' => 'cpf']);
+        $rules->add($rules->isUnique(['cpf']), ['errorField' => 'cpf', 'message' => 'Este CPF já está cadastrado.']);
 
         return $rules;
     }
