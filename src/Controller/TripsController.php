@@ -12,11 +12,12 @@ class TripsController extends AppController
 
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Drivers', 'Vehicles', 'Clients'],
-        ];
-        $trips = $this->paginate($this->Trips);
 
+        $query = $this->Trips
+            ->find()
+            ->contain(['Drivers', 'Vehicles', 'Clients']);
+
+        $trips = $this->paginate($query);
 
         $this->set(compact('trips'));
     }

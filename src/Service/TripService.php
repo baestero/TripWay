@@ -56,7 +56,7 @@ class TripService
       throw new RuntimeException('Não é possível criar viagem com veículo inativo, verifique o cadastro');
     }
 
-
+    //procurando viagens ativas pra aquele veículo 
 
     $vehicleBusy = $this->Trips
       ->find()

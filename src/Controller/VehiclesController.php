@@ -19,21 +19,15 @@ class VehiclesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Drivers'],
-        ];
-        $vehicles = $this->paginate($this->Vehicles);
+        $query = $this->Vehicles
+            ->find()
+            ->contain(['Drivers']);
+
+        $vehicles = $this->paginate($query);
 
         $this->set(compact('vehicles'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $vehicle = $this->Vehicles->get($id, [
