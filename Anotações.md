@@ -83,13 +83,13 @@
 
 - Sobre as rotas o cake usa Auto Routing por conevanção - Se temos DriversController ele enetende a rota /drivers
 
-                                                    | URL               | Método    |
-                                                    | ----------------- | --------- |
-                                                    | /drivers          | index()   |
-                                                    | /drivers/add      | add()     |
-                                                    | /drivers/edit/1   | edit(1)   |
-                                                    | /drivers/view/1   | view(1)   |
-                                                    | /drivers/delete/1 | delete(1) |
+                                                          | URL               | Método    |
+                                                          | ----------------- | --------- |
+                                                          | /drivers          | index()   |
+                                                          | /drivers/add      | add()     |
+                                                          | /drivers/edit/1   | edit(1)   |
+                                                          | /drivers/view/1   | view(1)   |
+                                                          | /drivers/delete/1 | delete(1) |
 
     -Tudo isso sem você escrever nenhuma rota manual.
 
@@ -102,3 +102,7 @@
 ## Após a criação do service importei no controller
 
 `use App\Service\TripService;`
+
+# Regras de negócio para serem validadas
+
+## Não pode ser posível criar uma viagem com veículo ou motorista inativos

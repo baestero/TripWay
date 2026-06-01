@@ -23,7 +23,10 @@
                     'options' => $drivers,
                     'label' => 'Motorista'
                 ]);
-                echo $this->Form->control('license_plate', ['label' => 'Placa']);
+                echo $this->Form->control('license_plate', [
+                    'label' => 'Placa',
+                    'readonly' => true,
+                ]);
                 echo $this->Form->control('model', ['label' => 'Modelo']);
                 echo $this->Form->control('brand', ['label' => 'Marca']);
                 echo $this->Form->control('year', ['label' => 'Ano']);

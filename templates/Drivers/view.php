@@ -45,36 +45,28 @@
           <div class="table-responsive">
             <table>
               <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Driver Id') ?></th>
-                <th><?= __('Vehicle Id') ?></th>
-                <th><?= __('Client Id') ?></th>
-                <th><?= __('Origin City') ?></th>
-                <th><?= __('Origin State') ?></th>
-                <th><?= __('Destination City') ?></th>
-                <th><?= __('Destination State') ?></th>
-                <th><?= __('Start At') ?></th>
-                <th><?= __('Finished At') ?></th>
+                <th><?= __('Código') ?></th>
+                <th><?= __('Cidade de Origem') ?></th>
+                <th><?= __('Estaod de  Origem') ?></th>
+                <th><?= __('Cidade de Destino') ?></th>
+                <th><?= __('Estado de Destino') ?></th>
+                <th><?= __('Iniciada') ?></th>
+                <th><?= __('Finalizada') ?></th>
                 <th><?= __('Status') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
               </tr>
               <?php foreach ($driver->trips as $trips) : ?>
                 <tr>
                   <td><?= h($trips->id) ?></td>
-                  <td><?= h($trips->driver_id) ?></td>
-                  <td><?= h($trips->vehicle_id) ?></td>
-                  <td><?= h($trips->client_id) ?></td>
                   <td><?= h($trips->origin_city) ?></td>
                   <td><?= h($trips->origin_state) ?></td>
                   <td><?= h($trips->destination_city) ?></td>
                   <td><?= h($trips->destination_state) ?></td>
                   <td><?= h($trips->start_at) ?></td>
                   <td><?= h($trips->finished_at) ?></td>
-                  <td><?= h($trips->status) ?></td>
+                  <td><?= h($trips->status === 'active' ? 'em andamento' : 'encerrada') ?></td>
                   <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Trips', 'action' => 'view', $trips->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Trips', 'action' => 'edit', $trips->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Trips', 'action' => 'delete', $trips->id], ['confirm' => __('Are you sure you want to delete # {0}?', $trips->id)]) ?>
+                    <?= $this->Html->link(__('Visualizar'), ['controller' => 'Trips', 'action' => 'view', $trips->id]) ?>
                   </td>
                 </tr>
               <?php endforeach; ?>
@@ -89,7 +81,6 @@
             <table>
               <tr>
                 <th><?= __('Código') ?></th>
-
                 <th><?= __('Placa') ?></th>
                 <th><?= __('Modelo') ?></th>
                 <th><?= __('Marca') ?></th>
@@ -106,9 +97,7 @@
                   <td><?= h($vehicles->year) ?></td>
                   <td><?= h($vehicles->status === 'active' ? 'Ativo' : 'Inativo') ?></td>
                   <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Vehicles', 'action' => 'view', $vehicles->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Vehicles', 'action' => 'edit', $vehicles->id]) ?>
-
+                    <?= $this->Html->link(__('Visualizar'), ['controller' => 'Vehicles', 'action' => 'view', $vehicles->id]) ?>
                   </td>
                 </tr>
               <?php endforeach; ?>

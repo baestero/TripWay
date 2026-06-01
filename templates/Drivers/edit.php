@@ -19,7 +19,10 @@
         <legend><?= __('Editar Dados do Motorista') ?></legend>
         <?php
         echo $this->Form->control('name', ['label' => 'Nome:']);
-        echo $this->Form->control('cpf', ['label' => 'CPF:']);
+        echo $this->Form->control('cpf', [
+          'label' => 'CPF:',
+          'readonly' => true,
+        ]);
         echo $this->Form->control('phone', ['label' => 'Celular:']);
         echo $this->Form->control('status', [
           'type' => 'select',
