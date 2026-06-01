@@ -61,7 +61,6 @@
                                 <th><?= __('Iniciada') ?></th>
                                 <th><?= __('Finalizada') ?></th>
                                 <th><?= __('Status') ?></th>
-                                <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                             <?php foreach ($vehicle->trips as $trips) : ?>
                                 <tr>
@@ -73,10 +72,6 @@
                                     <td><?= h($trips->start_at) ?></td>
                                     <td><?= h($trips->finished_at) ?></td>
                                     <td><?= h($trips->status === 'active' ? 'em andamento' : 'encerrada') ?></td>
-                                    <td class="actions">
-                                    <td class="actions">
-                                        <?= $this->Html->link(__('Visualizar'), ['controller' => 'Trips', 'action' => 'Visualizar', $trips->id]) ?>
-                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </table>

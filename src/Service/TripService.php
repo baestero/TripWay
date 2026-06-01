@@ -12,19 +12,28 @@ class TripService
 {
   private $Trips;
   private $Vehicles;
+  private $Drivers;
 
   public function __construct()
   {
     //usamos para acessar tabela sem precisar estar no model/controller
     $this->Trips = TableRegistry::getTableLocator()->get('Trips');
     $this->Vehicles = TableRegistry::getTableLocator()->get('Vehicles');
+    $this->Drivers = TableRegistry::getTableLocator()->get('Drivers');
   }
 
 
   public function createTrip(array $data)
   //recebendo os dados do form, validamos e salvamos no banco.
   {
-    //1.validando motorista
+    //validando motorista
+
+    $driver = $this->Drivers->get($data['driver_id']);
+
+    if ($driver->status === 'inactive') {
+      throw new RuntimeException('Não é possível criar viagem com motorista inativo, verifique o cadastro');
+    }
+
     //procurando viagens ativas pra aquele motorista 
 
     $driverBusy = $this->Trips
@@ -38,7 +47,16 @@ class TripService
       throw new RuntimeException('O Motorista já possui uma viagem em andamento');
     }
 
-    // 2.validando veículo
+    //validando veículo
+
+
+    $vehicle = $this->Vehicles->get($data['vehicle_id']);
+
+    if ($vehicle->status === 'inactive') {
+      throw new RuntimeException('Não é possível criar viagem com veículo inativo, verifique o cadastro');
+    }
+
+
 
     $vehicleBusy = $this->Trips
       ->find()
@@ -51,7 +69,7 @@ class TripService
       throw new RuntimeException('O veiculo já possui uma viagem em andamento');
     }
 
-    //3. validando vínculo - motorista/veiculo
+    //validando vínculo - motorista/veiculo
 
     $vehicle = $this->Vehicles->get($data['vehicle_id']);
 
@@ -59,11 +77,11 @@ class TripService
       throw new RuntimeException('Esse veículo não tem vínculo com esse motorista');
     }
 
-    //4. Criando entity
+    //Criando entity
 
     $trip = $this->Trips->newEntity($data);
 
-    //5. salvar
+    //5salvar
 
     if (!$this->Trips->save($trip)) {
       throw new RuntimeException('Não foi possível criar a viagem');

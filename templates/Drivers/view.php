@@ -53,7 +53,6 @@
                 <th><?= __('Iniciada') ?></th>
                 <th><?= __('Finalizada') ?></th>
                 <th><?= __('Status') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
               </tr>
               <?php foreach ($driver->trips as $trips) : ?>
                 <tr>
@@ -65,9 +64,6 @@
                   <td><?= h($trips->start_at) ?></td>
                   <td><?= h($trips->finished_at) ?></td>
                   <td><?= h($trips->status === 'active' ? 'em andamento' : 'encerrada') ?></td>
-                  <td class="actions">
-                    <?= $this->Html->link(__('Visualizar'), ['controller' => 'Trips', 'action' => 'view', $trips->id]) ?>
-                  </td>
                 </tr>
               <?php endforeach; ?>
             </table>
@@ -86,7 +82,6 @@
                 <th><?= __('Marca') ?></th>
                 <th><?= __('Ano') ?></th>
                 <th><?= __('Status') ?></th>
-                <th class="actions"><?= __('Ações') ?></th>
               </tr>
               <?php foreach ($driver->vehicles as $vehicles) : ?>
                 <tr>
@@ -96,9 +91,6 @@
                   <td><?= h($vehicles->brand) ?></td>
                   <td><?= h($vehicles->year) ?></td>
                   <td><?= h($vehicles->status === 'active' ? 'Ativo' : 'Inativo') ?></td>
-                  <td class="actions">
-                    <?= $this->Html->link(__('Visualizar'), ['controller' => 'Vehicles', 'action' => 'view', $vehicles->id]) ?>
-                  </td>
                 </tr>
               <?php endforeach; ?>
             </table>

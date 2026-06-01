@@ -44,7 +44,7 @@ class TripsController extends AppController
 
                 $service->createTrip($this->request->getData());
 
-                $this->Flash->success('Viagem criada com sucesso');
+                $this->Flash->success('Viagem gerada com sucesso');
 
                 return $this->redirect(['action' => 'index']);
             } catch (RuntimeException $e) {
