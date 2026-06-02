@@ -83,13 +83,13 @@
 
 - Sobre as rotas o cake usa Auto Routing por conevanção - Se temos DriversController ele enetende a rota /drivers
 
-                                                                              | URL               | Método    |
-                                                                              | ----------------- | --------- |
-                                                                              | /drivers          | index()   |
-                                                                              | /drivers/add      | add()     |
-                                                                              | /drivers/edit/1   | edit(1)   |
-                                                                              | /drivers/view/1   | view(1)   |
-                                                                              | /drivers/delete/1 | delete(1) |
+                                                                                      | URL               | Método    |
+                                                                                      | ----------------- | --------- |
+                                                                                      | /drivers          | index()   |
+                                                                                      | /drivers/add      | add()     |
+                                                                                      | /drivers/edit/1   | edit(1)   |
+                                                                                      | /drivers/view/1   | view(1)   |
+                                                                                      | /drivers/delete/1 | delete(1) |
 
     -Tudo isso sem escrever nenhuma rota manual.
 
@@ -111,9 +111,15 @@
 
 - Não permitir que a viagem finalizada seja editada
 
-# Migração do banco para Postgresql
+# Deploy
+
+## Migração do banco para Postgresql
 
 - Com a decisão tomada de tentar realizar o deploy dessa aplicação, pelos meios gratuitos disponíveis no momento, precisaria de um banco mais robusto para que eu pudesse hospedar.
 
 - Com a migração do banco realizada, vou configurar os acessos env ao banco para o deploy.
   as migrations facilitaram bastante para utilizar o novo banco.
+
+## Docker
+
+- Com a necessidade de fazer o deploy no render, que foi a ferramenta que escolhi, surgiu outra necessidade, o uso de docker para poder fazer build do projeto no render.
