@@ -296,15 +296,16 @@ return [
             'className' => Connection::class,
             'driver' => \Cake\Database\Driver\Postgres::class,
 
-            'host' => env('DB_HOST', 'localhost'),
-            'username' => env('DB_USER', 'postgres'),
-            'password' => env('DB_PASS', ''),
-            'database' => env('DB_NAME', 'app'),
+            'host' => env('DB_HOST'),
+            'username' => env('DB_USER'),
+            'password' => env('DB_PASS'),
+            'database' => env('DB_NAME'),
 
             'port' => 5432,
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
+
             /*
              * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
              */

@@ -14,10 +14,9 @@ RUN apt-get update && apt-get install -y \
 # =========================
 # Extensões PHP (CORRETO E LIMPO)
 # =========================
-RUN docker-php-ext-install intl \
-    && docker-php-ext-install pdo \
-    && docker-php-ext-install pdo_pgsql \
-    && docker-php-ext-install pgsql
+RUN apt-get update && apt-get install -y \
+    libpq-dev libicu-dev \
+    && docker-php-ext-install pdo pdo_pgsql pgsql intl
 
 # Debug (remover depois se quiser)
 RUN php -m | grep -E "pdo_pgsql|pgsql"
