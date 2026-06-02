@@ -6,6 +6,8 @@
 /tmp/*
 /vendor/*
 .env
+db/database.sqlite
+db/database_backup.sqlite
 
 # OS generated files #
 ######################
