@@ -282,11 +282,11 @@ return [
      *   other RDBMS.
      */
     'Datasources' => [
-        'default' => [
-            'driver' => 'Cake\Database\Driver\Postgres',
-            'url' => env('DATABASE_URL', null),
+        'Datasources' => [
+            'default' => [
+                'url' => env('DATABASE_URL', null),
+            ],
         ],
-
 
         /*
          * The test connection is used during the test suite.

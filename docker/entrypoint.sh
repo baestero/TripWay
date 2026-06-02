@@ -9,9 +9,8 @@ return [
         'salt' => env('SECURITY_SALT', 'algum-salt-aqui-qualquer-string-longa'),
     ],
     'Datasources' => [
-        'default' => [
-            'driver' => 'Cake\Database\Driver\Postgres',
-            'url' => env('DATABASE_URL', null),
+       'default' => [
+        'url' => env('DATABASE_URL', null),
         ],
     ],
 ];
