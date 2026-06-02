@@ -283,16 +283,10 @@ return [
      */
     'Datasources' => [
         'default' => [
-            'className' => Connection::class,
-            'host' => env('DB_HOST'),
-            'username' => env('DB_USER'),
-            'password' => env('DB_PASS'),
-            'database' => env('DB_NAME'),
-            'port' => 5432,
-            'encoding' => 'utf8',
-            'timezone' => 'UTC',
-            'cacheMetadata' => true,
+            'driver' => 'Cake\Database\Driver\Postgres',
+            'url' => env('DATABASE_URL', null),
         ],
+
 
         /*
          * The test connection is used during the test suite.
