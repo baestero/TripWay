@@ -2,7 +2,7 @@
 set -e
 
 echo "==> Running migrations..."
-cake migrations migrate || true
+bin/cake migrations migrate || true
 
 echo "==> Starting Apache..."
 apache2-foreground
