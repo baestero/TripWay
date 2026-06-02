@@ -16,10 +16,12 @@ RUN apt-get update && apt-get install -y \
 # =========================
 RUN apt-get update && apt-get install -y \
     libpq-dev libicu-dev \
-    && docker-php-ext-install pdo pdo_pgsql pgsql intl
-
-# Debug (remover depois se quiser)
-RUN php -m | grep -E "pdo_pgsql|pgsql"
+    && docker-php-ext-install pdo pdo_pgsql pgsql intl \
+    && docker-php-ext-enable pdo_pgsql pgsql
+RUN ls /usr/local/etc/php/conf.d/ | grep pgsql
+# Após instalar as extensões
+RUN php -m | grep -E "pdo|pgsql"
+RUN php -r "var_dump(extension_loaded('pdo_pgsql'));"
 
 # =========================
 # Composer
