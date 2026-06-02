@@ -281,11 +281,10 @@ return [
      *   E.g set it to 'utf8mb4' in MariaDB and MySQL and 'utf8' for any
      *   other RDBMS.
      */
+
     'Datasources' => [
-        'Datasources' => [
-            'default' => [
-                'url' => env('DATABASE_URL', null),
-            ],
+        'default' => [
+            'url' => env('DATABASE_URL', null),
         ],
 
         /*
