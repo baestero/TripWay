@@ -1,21 +1,21 @@
 #!/bin/sh
 set -e
 
-cat > /var/www/html/config/app_local.php << 'EOF'
+cat > /var/www/html/config/app_local.php << EOF
 <?php
 return [
     'debug' => true,
     'Security' => [
-        'salt' => env('SECURITY_SALT', 'algum-salt-longo-aqui'),
+        'salt' => '$(echo $SECURITY_SALT)',
     ],
     'Datasources' => [
         'default' => [
-            'driver' => 'Cake\Database\Driver\Postgres',
-            'host' => env('DB_HOST', 'localhost'),
-            'username' => env('DB_USER', ''),
-            'password' => env('DB_PASSWORD', ''),
-            'database' => env('DB_DATABASE', ''),
-            'port' => env('DB_PORT', '5432'),
+            'driver' => 'Cake\\Database\\Driver\\Postgres',
+            'host' => '${DB_HOST}',
+            'username' => '${DB_USER}',
+            'password' => '${DB_PASSWORD}',
+            'database' => '${DB_DATABASE}',
+            'port' => '${DB_PORT}',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
@@ -25,13 +25,6 @@ return [
 EOF
 
 echo "==> app_local.php criado!"
-
-echo "==> Debug config:"
-php -r "
-\$local = include '/var/www/html/config/app_local.php';
-var_dump(\$local['Datasources']['default']['driver']);
-"
-
 echo "==> Running migrations..."
 bin/cake migrations migrate -c default || true
 
