@@ -83,15 +83,15 @@
 
 - Sobre as rotas o cake usa Auto Routing por conevanção - Se temos DriversController ele enetende a rota /drivers
 
-                                                            | URL               | Método    |
-                                                            | ----------------- | --------- |
-                                                            | /drivers          | index()   |
-                                                            | /drivers/add      | add()     |
-                                                            | /drivers/edit/1   | edit(1)   |
-                                                            | /drivers/view/1   | view(1)   |
-                                                            | /drivers/delete/1 | delete(1) |
+                                                                          | URL               | Método    |
+                                                                          | ----------------- | --------- |
+                                                                          | /drivers          | index()   |
+                                                                          | /drivers/add      | add()     |
+                                                                          | /drivers/edit/1   | edit(1)   |
+                                                                          | /drivers/view/1   | view(1)   |
+                                                                          | /drivers/delete/1 | delete(1) |
 
-    -Tudo isso sem você escrever nenhuma rota manual.
+    -Tudo isso sem escrever nenhuma rota manual.
 
 ## Criação do Service para Validação de regras de negócio para as trips
 
@@ -99,12 +99,20 @@
 
 - `src/Service/TripService.php`
 
-## Após a criação do service importei no controller
+- Após a criação do service importei no controller
 
 `use App\Service\TripService;`
 
-# Regras de negócio para serem validadas
+## Regras de negócio para serem validadas
 
-## Não pode ser posível criar uma viagem com veículo ou motorista inativos
+- Não permitir criar viagem com motorista ou veiculos em viagem.
 
-## Não permitir que a viagem finalizada seja editada
+- Não pode ser posível criar uma viagem com veículo ou motorista inativos
+
+- Não permitir que a viagem finalizada seja editada
+
+# Migração do banco para Postgresql
+
+- Com a decisão tomada de tentar realizar o deploy dessa aplicação, pelos meios gratuitos disponíveis no momento, precisaria de um banco mais robusto para que eu pudesse hospedar.
+
+- Com a migração do banco realizada, vou configurar os acessos env ao banco para o deploy.
