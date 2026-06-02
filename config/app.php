@@ -284,7 +284,6 @@ return [
     'Datasources' => [
         'default' => [
             'className' => Connection::class,
-            'driver' => \Cake\Database\Driver\Postgres::class,
             'host' => env('DB_HOST'),
             'username' => env('DB_USER'),
             'password' => env('DB_PASS'),
