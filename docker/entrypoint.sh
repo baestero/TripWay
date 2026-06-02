@@ -25,6 +25,13 @@ return [
 EOF
 
 echo "==> app_local.php criado!"
+
+echo "==> Debug config:"
+php -r "
+\$local = include '/var/www/html/config/app_local.php';
+var_dump(\$local['Datasources']['default']['driver']);
+"
+
 echo "==> Running migrations..."
 bin/cake migrations migrate -c default || true
 
