@@ -284,7 +284,7 @@ return [
 
     'Datasources' => [
         'default' => [
-            'url' => env('DATABASE_URL', null),
+          
         ],
 
         /*
@@ -376,4 +376,4 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
-];
+]
