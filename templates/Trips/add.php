@@ -8,6 +8,9 @@
  * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
 ?>
+<?php
+$this->assign('title', 'Viagens');
+?>
 <div class="row">
   <aside class="column">
     <div class="side-nav">

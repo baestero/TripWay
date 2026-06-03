@@ -5,6 +5,9 @@
  * @var \App\Model\Entity\Client $client
  */
 ?>
+<?php
+$this->assign('title', 'Clientes');
+?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">

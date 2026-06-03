@@ -6,6 +6,9 @@
  * @var string[]|\Cake\Collection\CollectionInterface $drivers
  */
 ?>
+<?php
+$this->assign('title', 'Veículos');
+?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">

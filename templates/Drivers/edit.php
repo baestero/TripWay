@@ -5,6 +5,10 @@
  * @var \App\Model\Entity\Driver $driver
  */
 ?>
+
+<?php
+$this->assign('title', 'Motoristas');
+?>
 <div class="row">
   <aside class="column">
     <div class="side-nav">

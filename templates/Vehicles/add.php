@@ -6,6 +6,10 @@
  * @var \Cake\Collection\CollectionInterface|string[] $drivers
  */
 ?>
+
+<?php
+$this->assign('title', 'Veículos');
+?>
 <div class="row">
   <aside class="column">
     <div class="side-nav">
@@ -19,23 +23,23 @@
       <fieldset>
         <legend><?= __('Cadastrar Veículo') ?></legend>
         <?php
-                echo $this->Form->control('driver_id', [
-                    'options' => $drivers,
-                    'label' => 'Motorista:'
-                ]);
-                echo $this->Form->control('license_plate', ['label' => 'Placa:']);
-                echo $this->Form->control('model', ['label' => 'Modelo:']);
-                echo $this->Form->control('brand', ['label' => 'Marca:']);
-                echo $this->Form->control('year', ['label' => 'Ano:']);
-                echo $this->Form->control('status', [
-                    'label' => 'Status:',
-                    'type' => 'select',
-                    'options' => [
-                        'active' => 'Ativo',
-                        'inactive' => 'Inativo',
-                    ]
-                ]);
-                ?>
+        echo $this->Form->control('driver_id', [
+          'options' => $drivers,
+          'label' => 'Motorista:'
+        ]);
+        echo $this->Form->control('license_plate', ['label' => 'Placa:']);
+        echo $this->Form->control('model', ['label' => 'Modelo:']);
+        echo $this->Form->control('brand', ['label' => 'Marca:']);
+        echo $this->Form->control('year', ['label' => 'Ano:']);
+        echo $this->Form->control('status', [
+          'label' => 'Status:',
+          'type' => 'select',
+          'options' => [
+            'active' => 'Ativo',
+            'inactive' => 'Inativo',
+          ]
+        ]);
+        ?>
       </fieldset>
       <?= $this->Form->button(__('Cadastrar')) ?>
       <?= $this->Form->end() ?>

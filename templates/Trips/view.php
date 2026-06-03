@@ -5,6 +5,9 @@
  * @var \App\Model\Entity\Trip $trip
  */
 ?>
+<?php
+$this->assign('title', 'Viagens');
+?>
 <div class="row">
   <aside class="column">
     <div class="side-nav">

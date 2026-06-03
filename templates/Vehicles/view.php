@@ -5,6 +5,10 @@
  * @var \App\Model\Entity\Vehicle $vehicle
  */
 ?>
+
+<?php
+$this->assign('title', 'Veículos');
+?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">

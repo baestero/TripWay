@@ -11,6 +11,7 @@ $cakeDescription = 'Tripway';
     <?= $cakeDescription ?>:
     <?= $this->fetch('title') ?>
   </title>
+
   <?= $this->Html->meta(
     'icon',
     '/img/logo.svg',
