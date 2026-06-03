@@ -56,6 +56,7 @@ RUN mkdir -p logs tmp \
 # EntryPoint
 # =========================
 COPY docker/entrypoint.sh /entrypoint.sh
+RUN sed -i 's/\r//' /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 80

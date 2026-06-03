@@ -24,7 +24,7 @@ return [
 ];
 EOF
 
-echo "==> app_local.php criado!"
+echo "==> app_local.php criadoV2!"
 echo "==> Running migrations..."
 bin/cake migrations migrate -c default || true
 
