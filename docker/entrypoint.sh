@@ -4,7 +4,7 @@ set -e
 cat > /var/www/html/config/app_local.php << 'PHPEOF'
 <?php
 return [
-    'debug' => true,
+    'debug' => false,
     'Security' => [
         'salt' => env('SECURITY_SALT', 'default-salt-value'),
     ],
@@ -24,10 +24,6 @@ return [
     ],
 ];
 PHPEOF
-
-echo "==> app_local.php criadoV3!"
-echo "==> Conteudo gerado:"
-cat /var/www/html/config/app_local.php
 
 echo "==> Running migrations..."
 bin/cake migrations migrate -c default || true

@@ -83,13 +83,13 @@
 
 - Sobre as rotas o cake usa Auto Routing por conevanção - Se temos DriversController ele enetende a rota /drivers
 
-                                                                                      | URL               | Método    |
-                                                                                      | ----------------- | --------- |
-                                                                                      | /drivers          | index()   |
-                                                                                      | /drivers/add      | add()     |
-                                                                                      | /drivers/edit/1   | edit(1)   |
-                                                                                      | /drivers/view/1   | view(1)   |
-                                                                                      | /drivers/delete/1 | delete(1) |
+                                                                                                        | URL               | Método    |
+                                                                                                        | ----------------- | --------- |
+                                                                                                        | /drivers          | index()   |
+                                                                                                        | /drivers/add      | add()     |
+                                                                                                        | /drivers/edit/1   | edit(1)   |
+                                                                                                        | /drivers/view/1   | view(1)   |
+                                                                                                        | /drivers/delete/1 | delete(1) |
 
     -Tudo isso sem escrever nenhuma rota manual.
 
@@ -123,3 +123,13 @@
 ## Docker
 
 - Com a necessidade de fazer o deploy no render, que foi a ferramenta que escolhi, surgiu outra necessidade, o uso de docker para poder fazer build do projeto no render.
+
+## Dificuldades + Solução
+
+- Após configurar docker e subir o projeto no render tive dificuldades com o erro:
+
+    Could not find driver postgresql for connection default.%0D%0ACake\Database\Exception\MissingDriverException%0D%0A%0D%0Arender
+
+- O problema era que o app.php tinha 'url' => env('DATABASE\*URL', null) no default, e o app_local.php gerado pelo entrypoint tinha driver + host etc. No merge os dois conflitavam e o CakePHP não conseguia inferir o driver corretamente.
+
+- A solução foi deixar o default vazio no app.php e toda a config do banco ficando apenas no app_local.php gerado dinamicamente pelo entrypoint.
