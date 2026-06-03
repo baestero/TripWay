@@ -1,7 +1,5 @@
 <?php
-
-
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Tripway';
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +11,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $cakeDescription ?>:
     <?= $this->fetch('title') ?>
   </title>
-  <?= $this->Html->meta('icon') ?>
+  <?= $this->Html->meta(
+    'icon',
+    '/img/logo.svg',
+    ['type' => 'image/svg+xml']
+  ) ?>
 
   <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
 

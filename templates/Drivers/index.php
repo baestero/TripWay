@@ -1,3 +1,7 @@
+<?php
+$this->assign('title', 'Motoristas');
+?>
+
 <div class="drivers index content">
   <?= $this->Html->link(__('Cadastrar'), ['action' => 'add'], ['class' => 'button float-right']) ?>
   <h3><?= __('Motoristas') ?></h3>

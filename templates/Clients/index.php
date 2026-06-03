@@ -1,10 +1,19 @@
 <?php
+$this->assign('title', 'Motoristas');
+?>
+
+<?php
 
 /**
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Client> $clients
  */
 ?>
+
+<?php
+$this->assign('title', 'Clientes');
+?>
+
 <div class="clients index content">
     <?= $this->Html->link(__('Cadastrar'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Clientes') ?></h3>

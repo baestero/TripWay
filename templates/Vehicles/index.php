@@ -5,6 +5,10 @@
  * @var iterable<\App\Model\Entity\Vehicle> $vehicles
  */
 ?>
+
+<?php
+$this->assign('title', 'Veículos');
+?>
 <div class="vehicles index content">
     <?= $this->Html->link(__('Cadastrar'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Veículos') ?></h3>

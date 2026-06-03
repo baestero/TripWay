@@ -284,8 +284,6 @@ return [
 
     'Datasources' => [
         'default' => [],
-
-
         /*
          * The test connection is used during the test suite.
          */
