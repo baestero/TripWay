@@ -283,9 +283,8 @@ return [
      */
 
     'Datasources' => [
-        'default' => [
-          
-        ],
+        'default' => [],
+
 
         /*
          * The test connection is used during the test suite.
@@ -376,4 +375,4 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
-]
+];
