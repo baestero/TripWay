@@ -284,15 +284,6 @@ return [
 
     'Datasources' => [
         'default' => [
-            'className' => Connection::class,
-            'driver' => 'Cake\Database\Driver\Postgres',
-            'persistent' => false,
-            'timezone' => 'UTC',
-            'flags' => [],
-            'cacheMetadata' => true,
-            'log' => false,
-            'quoteIdentifiers' => false,
-
             'url' => env('DATABASE_URL', null),
         ],
 
@@ -301,14 +292,15 @@ return [
          */
         'test' => [
             'className' => Connection::class,
-            'driver' => 'Cake\Database\Driver\Postgres',
+            'driver' => Mysql::class,
             'persistent' => false,
             'timezone' => 'UTC',
+            //'encoding' => 'utf8mb4',
             'flags' => [],
             'cacheMetadata' => true,
             'quoteIdentifiers' => false,
             'log' => false,
-            'url' => env('DATABASE_TEST_URL', null),
+            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
     ],
 

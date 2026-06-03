@@ -1,28 +1,29 @@
 #!/bin/sh
 set -e
 
-cat > /var/www/html/config/app_local.php << EOF
+cat > /var/www/html/config/app_local.php << 'PHPEOF'
 <?php
 return [
     'debug' => true,
     'Security' => [
-        'salt' => '$(echo $SECURITY_SALT)',
+        'salt' => env('SECURITY_SALT', 'default-salt-value'),
     ],
     'Datasources' => [
         'default' => [
-            'driver' => 'Cake\\Database\\Driver\\Postgres',
-            'host' => '${DB_HOST}',
-            'username' => '${DB_USER}',
-            'password' => '${DB_PASSWORD}',
-            'database' => '${DB_DATABASE}',
-            'port' => '${DB_PORT}',
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Postgres',
+            'host' => env('DB_HOST', 'localhost'),
+            'username' => env('DB_USER', ''),
+            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', ''),
+            'port' => env('DB_PORT', '5432'),
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
         ],
     ],
 ];
-EOF
+PHPEOF
 
 echo "==> app_local.php criadoV3!"
 echo "==> Conteudo gerado:"
