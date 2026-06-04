@@ -130,7 +130,9 @@ config/
 docker/             # Apache + entrypoint (gera app_local e roda migrations)
 ```
 
-Documentação interna de desenvolvimento: `Anotações_Dev.md`.
+### Diário de desenvolvimento — `Anotações_Dev.md`
+
+Arquivo na raiz do projeto com **anotações pessoais** escritas durante o desenvolvimento: decisões técnicas (migrations, Bake, `TripService`), relacionamentos do banco, deploy no Render com Docker/PostgreSQL, **dificuldades encontradas** e **soluções** aplicadas (por exemplo, conflito de configuração do datasource no deploy). Complementa este README com o contexto do processo, não só o estado final do código.
 
 ---
 
@@ -212,7 +214,7 @@ docker run -p 8080:80 \
   tripway
 ```
 
-A aplicação em produção roda no **Render** (web service + PostgreSQL): [https://tripway-eykv.onrender.com/](https://tripway-eykv.onrender.com/). Detalhes do deploy e lições aprendidas estão em `Anotações_Dev.md`.
+A aplicação em produção roda no **Render** (web service + PostgreSQL): [https://tripway-eykv.onrender.com/](https://tripway-eykv.onrender.com/). O passo a passo do deploy, problemas e correções estão documentados em `Anotações_Dev.md` (ver seção acima).
 
 ---
 
