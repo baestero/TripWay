@@ -23,7 +23,7 @@ A página inicial redireciona para a listagem de motoristas (`/` → `/drivers`)
 | Motoristas | `/drivers`                | CRUD com nome, CPF, telefone e status (`active` / `inactive`) |
 | Veículos   | `/vehicles`               | CRUD vinculado a um motorista; validação de placa (padrão Mercosul) |
 | Clientes   | `/clients`                | CRUD com endereço completo e documento único |
-| Viagens    | `/trips`                  | Criação com validações de negócio, edição de itinerário e encerramento |
+| Viagens    | `/trips`                  | Criação com validações de negócio; edição só do itinerário (viagens ativas); encerramento |
 
 Cada entidade possui as ações padrão geradas pelo Bake: **index**, **add**, **edit**, **view** e **delete** (com paginação nas listagens).
 
@@ -83,8 +83,13 @@ Falhas lançam `RuntimeException` com mensagem em português; o controller exibe
 ### Controller — `TripsController`
 
 - **add**: delega para `TripService::createTrip()`
-- **edit**: bloqueia alteração se a viagem já estiver **inactive** (encerrada)
 - **finishTrip**: delega para `TripService::finishTrip()` (ação na listagem de viagens)
+
+**Edição de viagem (`edit`):**
+
+- **Não é possível editar** uma viagem com status **inactive** (encerrada). O controller redireciona com mensagem de erro antes de abrir o formulário.
+- Em viagens **active** (em andamento), a edição permite alterar **somente o itinerário**: cidade e estado de origem e de destino (`origin_city`, `origin_state`, `destination_city`, `destination_state`).
+- Motorista, veículo, cliente, datas e status **não** entram no formulário de edição (`templates/Trips/edit.php`) — esses vínculos são definidos na criação e nas regras do `TripService`.
 
 ### Validações nas Models (Tables)
 
