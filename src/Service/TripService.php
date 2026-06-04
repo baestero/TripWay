@@ -13,6 +13,7 @@ class TripService
   private $Trips;
   private $Vehicles;
   private $Drivers;
+  private $Clients;
 
   public function __construct()
   {
@@ -20,6 +21,7 @@ class TripService
     $this->Trips = TableRegistry::getTableLocator()->get('Trips');
     $this->Vehicles = TableRegistry::getTableLocator()->get('Vehicles');
     $this->Drivers = TableRegistry::getTableLocator()->get('Drivers');
+    $this->Clients = TableRegistry::getTableLocator()->get('Clients');
   }
 
 
@@ -75,6 +77,15 @@ class TripService
 
     if ((int)$vehicle->driver_id !== (int)$data['driver_id']) {
       throw new RuntimeException('Esse veículo não tem vínculo com esse motorista');
+    }
+
+    // Validando cliente 
+
+
+    $client = $this->Clients->get($data['client_id']);
+
+    if ($client->status === 'inactive') {
+      throw new RuntimeException('Não é possível criar viagem com cliente inativo, verifique o cadastro');
     }
 
     //Criando entity
