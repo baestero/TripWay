@@ -27,7 +27,10 @@ $this->assign('title', 'Motoristas');
         echo $this->Form->control('cpf', [
           'label' => 'CPF:'
         ]);
-        echo $this->Form->control('phone', ['label' => 'Celular:']);
+        echo $this->Form->control('phone', [
+          'label' => 'Celular:',
+          'maxlength' => 11
+        ]);
         ?>
       </fieldset>
       <?= $this->Form->button(__('Cadastrar')) ?>

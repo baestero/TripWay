@@ -12,11 +12,7 @@ namespace App\Controller;
  */
 class VehiclesController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
+
     public function index()
     {
         $query = $this->Vehicles
@@ -37,11 +33,7 @@ class VehiclesController extends AppController
         $this->set(compact('vehicle'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
+
     public function add()
     {
         $vehicle = $this->Vehicles->newEmptyEntity();
@@ -58,13 +50,7 @@ class VehiclesController extends AppController
         $this->set(compact('vehicle', 'drivers'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function edit($id = null)
     {
         $vehicle = $this->Vehicles->get($id, [
@@ -83,13 +69,7 @@ class VehiclesController extends AppController
         $this->set(compact('vehicle', 'drivers'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Vehicle id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);

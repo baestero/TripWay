@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -67,27 +68,33 @@ class VehiclesTable extends Table
 
         $validator
             ->scalar('license_plate')
-            ->maxLength('license_plate', 15)
+            ->maxLength('license_plate', 7)
             ->requirePresence('license_plate', 'create')
-            ->notEmptyString('license_plate')
-            ->add('license_plate', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->notEmptyString('license_plate', 'A placa é obrigatória')
+            ->regex(
+                'license_plate',
+                '/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/i',
+                'Placa inválida'
+            );
 
         $validator
             ->scalar('model')
             ->maxLength('model', 20)
             ->requirePresence('model', 'create')
-            ->notEmptyString('model');
+            ->notEmptyString('model', 'Modelo do Veiculo é Obrigatório');
 
         $validator
             ->scalar('brand')
             ->maxLength('brand', 20)
             ->requirePresence('brand', 'create')
-            ->notEmptyString('brand');
+            ->notEmptyString('brand', 'Marca do Veículo é Obrigatória');
 
         $validator
-            ->integer('year')
+            ->integer('year', 'O ano deve ser um número')
+            ->greaterThanOrEqual('year', 1900, 'Ano inválido')
+            ->lessThanOrEqual('year', date('Y') + 1, 'Ano inválido')
             ->requirePresence('year', 'create')
-            ->notEmptyString('year');
+            ->notEmptyString('year', 'O ano dde fabricação é Obrigatório');
 
         $validator
             ->scalar('status')

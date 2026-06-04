@@ -32,7 +32,11 @@ $this->assign('title', 'Veículos');
                 ]);
                 echo $this->Form->control('model', ['label' => 'Modelo']);
                 echo $this->Form->control('brand', ['label' => 'Marca']);
-                echo $this->Form->control('year', ['label' => 'Ano']);
+                echo $this->Form->control('year', [
+                    'label' => 'Ano:',
+                    'type' =>   'Number',
+                    'maxlength' => 4
+                ]);
                 echo $this->Form->control('status', [
                     'type' => 'select',
                     'label' => 'Status',
