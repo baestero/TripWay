@@ -40,6 +40,14 @@ class VehiclesTable extends Table
     public function initialize(array $config): void
     {
         parent::initialize($config);
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'updated_at' => 'always'
+                ]
+            ]
+        ]);
 
         $this->setTable('vehicles');
         $this->setDisplayField('license_plate');

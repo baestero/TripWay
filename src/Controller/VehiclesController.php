@@ -44,7 +44,7 @@ class VehiclesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possível salvar veículo verifique as informações abaixo.'));
         }
         $drivers = $this->Vehicles->Drivers->find('list', ['limit' => 200])->all();
         $this->set(compact('vehicle', 'drivers'));
@@ -63,7 +63,7 @@ class VehiclesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não foi possível salvar veículo verifique as informações abaixo.'));
         }
         $drivers = $this->Vehicles->Drivers->find('list', ['limit' => 200])->all();
         $this->set(compact('vehicle', 'drivers'));

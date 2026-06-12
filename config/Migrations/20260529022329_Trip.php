@@ -67,7 +67,7 @@ class Trip extends AbstractMigration
         $table->addForeignKey('client_id', 'clients', 'id', [
             'delete' => 'RESTRICT'
         ]);
-
+        $table->addTimestamps();
         $table->create();
     }
 }

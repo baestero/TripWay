@@ -54,6 +54,7 @@ class Client extends AbstractMigration
             'null' => false
         ]);
         $table->addIndex('document', ['unique' => true]);
+        $table->addTimestamps();
         $table->create();
     }
 }

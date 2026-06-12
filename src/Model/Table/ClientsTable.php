@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -38,6 +39,15 @@ class ClientsTable extends Table
     public function initialize(array $config): void
     {
         parent::initialize($config);
+
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'updated_at' => 'always'
+                ]
+            ]
+        ]);
 
         $this->setTable('clients');
         $this->setDisplayField('name');

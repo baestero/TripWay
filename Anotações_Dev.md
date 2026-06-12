@@ -83,13 +83,13 @@
 
 - Sobre as rotas o cake usa Auto Routing por conevanção - Se temos DriversController ele enetende a rota /drivers
 
-                                                                                                                | URL               | Método    |
-                                                                                                                | ----------------- | --------- |
-                                                                                                                | /drivers          | index()   |
-                                                                                                                | /drivers/add      | add()     |
-                                                                                                                | /drivers/edit/1   | edit(1)   |
-                                                                                                                | /drivers/view/1   | view(1)   |
-                                                                                                                | /drivers/delete/1 | delete(1) |
+                                                                                                                          | URL               | Método    |
+                                                                                                                          | ----------------- | --------- |
+                                                                                                                          | /drivers          | index()   |
+                                                                                                                          | /drivers/add      | add()     |
+                                                                                                                          | /drivers/edit/1   | edit(1)   |
+                                                                                                                          | /drivers/view/1   | view(1)   |
+                                                                                                                          | /drivers/delete/1 | delete(1) |
 
     -Tudo isso sem escrever nenhuma rota manual.
 
@@ -138,3 +138,23 @@
 
 - O render não disponibiliza url para acessar meu banco via ferramentas externas e a deles são pagas, ou seja não tenho como manipular meu banco via script para consultas, updates e etc, somente via tela.
     - A melhoria seria migrar o banco postgres sa aplicação para outro servidor neon.tech é a sugestão. onde a ferramenta permite também gratuitamente hospedar e utilizar de uma URL externa para acesso como beekeper.
+
+## Alteração nas Tables
+
+- Após a criação de uma nova table de Users, identifiquei que não tinha a coluna created e modified e descobri o uso da addtimestamp()
+
+Porem já tinha criado as migrations em produção e para corrigir criei uma nova migration adicionando o addTimestamp() para cada tabela que ainda não possuia e no codigo das tables no
+initialize adicionei o código:
+
+      ```php
+     $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'updated_at' => 'always'
+                ]
+            ]
+        ]);
+      ```
+
+- Assim não afetaria meus dados de produção e adicionaria as novas colunas created e modified

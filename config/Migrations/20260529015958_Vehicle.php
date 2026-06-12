@@ -45,6 +45,7 @@ class Vehicle extends AbstractMigration
         $table->addForeignKey('driver_id', 'drivers', 'id', [
             'delete' => 'RESTRICT'
         ]);
+        $table->addTimestamps();
         $table->create();
     }
 }

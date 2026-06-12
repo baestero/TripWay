@@ -30,6 +30,7 @@ class Driver extends AbstractMigration
         ]);
 
         $table->addIndex('cpf', ['unique' => true]);
+        $table->addTimestamps();
         $table->create();
     }
 }
