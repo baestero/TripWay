@@ -26,8 +26,7 @@ class UsersSeed extends AbstractSeed
                 'password' => (new DefaultPasswordHasher())->hash('9812'),
                 'role' => 'admin',
                 'status' => 'active',
-                'created' => date('Y-m-d H:i:s'),
-                'modified' => date('Y-m-d H:i:s'),
+
             ]
         ];
 
