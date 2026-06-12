@@ -83,13 +83,13 @@
 
 - Sobre as rotas o cake usa Auto Routing por conevanção - Se temos DriversController ele enetende a rota /drivers
 
-                                                                                                                              | URL               | Método    |
-                                                                                                                              | ----------------- | --------- |
-                                                                                                                              | /drivers          | index()   |
-                                                                                                                              | /drivers/add      | add()     |
-                                                                                                                              | /drivers/edit/1   | edit(1)   |
-                                                                                                                              | /drivers/view/1   | view(1)   |
-                                                                                                                              | /drivers/delete/1 | delete(1) |
+                                                                                                                                                                  | URL               | Método    |
+                                                                                                                                                                  | ----------------- | --------- |
+                                                                                                                                                                  | /drivers          | index()   |
+                                                                                                                                                                  | /drivers/add      | add()     |
+                                                                                                                                                                  | /drivers/edit/1   | edit(1)   |
+                                                                                                                                                                  | /drivers/view/1   | view(1)   |
+                                                                                                                                                                  | /drivers/delete/1 | delete(1) |
 
     -Tudo isso sem escrever nenhuma rota manual.
 
@@ -153,3 +153,35 @@ initialize adicionei o código:
       ```
 
 - Assim não afetaria meus dados de produção e adicionaria as novas colunas created e modified
+
+## Tela de Login
+
+- Para criação de login iniciei criando a migration User
+- Agora vou criar model e controller
+  cake bake model Users & cake bake controller Users
+
+Primeiro passo é configurar na entity Users o hash da senha
+
+```php
+  protected function _setPassword(?string $password): ?string
+    {
+        if (empty($password)) {
+            return $password;
+        }
+
+        return (new DefaultPasswordHasher())->hash($password);
+    }
+```
+
+### rotas
+
+- Deixei padrão do cake configurar as rotas chamando pelos metodos do controller Users
+
+### Controller Users & autenticação
+
+- Aqui criei os metodos login e logout.
+
+- A autenticação vou deixar por contra do plugin do cake Authentication Plugin.
+  composer require cakephp/authentication
+
+adiciona o pugin em src/Application.php, em bootstrap():

@@ -28,19 +28,9 @@ $cakeDescription = 'Tripway';
 <body>
   <nav class="top-nav">
     <div class="top-nav-title">
-      <a href="<?= $this->Url->build('/') ?>"><span>Trip</span>Whay</a>
+      <a><span>Trip</span>Whay</a>
     </div>
-    <div class="top-nav-links">
-      <a rel="noopener" href="/drivers">Motoristas</a>
-      <a rel="noopener" href="/vehicles">Veiculos</a>
-      <a rel="noopener" href="/clients">Clientes</a>
-      <a rel="noopener" href="/trips">Viagens</a>
-      <?= $this->Html->link(
-        'Sair',
-        ['controller' => 'Users', 'action' => 'logout'],
-        ['class' => 'btn btn-danger']
-      ) ?>
-    </div>
+
   </nav>
   <main class="main">
     <div class="container">
