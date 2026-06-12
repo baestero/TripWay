@@ -83,13 +83,13 @@
 
 - Sobre as rotas o cake usa Auto Routing por conevanção - Se temos DriversController ele enetende a rota /drivers
 
-                                                                                                                          | URL               | Método    |
-                                                                                                                          | ----------------- | --------- |
-                                                                                                                          | /drivers          | index()   |
-                                                                                                                          | /drivers/add      | add()     |
-                                                                                                                          | /drivers/edit/1   | edit(1)   |
-                                                                                                                          | /drivers/view/1   | view(1)   |
-                                                                                                                          | /drivers/delete/1 | delete(1) |
+                                                                                                                              | URL               | Método    |
+                                                                                                                              | ----------------- | --------- |
+                                                                                                                              | /drivers          | index()   |
+                                                                                                                              | /drivers/add      | add()     |
+                                                                                                                              | /drivers/edit/1   | edit(1)   |
+                                                                                                                              | /drivers/view/1   | view(1)   |
+                                                                                                                              | /drivers/delete/1 | delete(1) |
 
     -Tudo isso sem escrever nenhuma rota manual.
 
@@ -133,11 +133,6 @@
 - O problema era que o app.php tinha 'url' => env('DATABASE\*URL', null) no default, e o app_local.php gerado pelo entrypoint tinha driver + host etc. No merge os dois conflitavam e o CakePHP não conseguia inferir o driver corretamente.
 
 - A solução foi deixar o default vazio no app.php e toda a config do banco ficando apenas no app_local.php gerado dinamicamente pelo entrypoint.
-
-## Melhorias pós Deploy
-
-- O render não disponibiliza url para acessar meu banco via ferramentas externas e a deles são pagas, ou seja não tenho como manipular meu banco via script para consultas, updates e etc, somente via tela.
-    - A melhoria seria migrar o banco postgres sa aplicação para outro servidor neon.tech é a sugestão. onde a ferramenta permite também gratuitamente hospedar e utilizar de uma URL externa para acesso como beekeper.
 
 ## Alteração nas Tables
 
