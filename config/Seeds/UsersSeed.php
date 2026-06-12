@@ -23,10 +23,9 @@ class UsersSeed extends AbstractSeed
             [
                 'name' => 'Admin',
                 'email' => 'admin@tripway.com',
-                'password' => (new DefaultPasswordHasher())->hash('9812'),
+                'password' => (new DefaultPasswordHasher())->hash('1234'),
                 'role' => 'admin',
                 'status' => 'active',
-
             ]
         ];
 
