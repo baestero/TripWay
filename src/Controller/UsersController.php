@@ -30,6 +30,7 @@ class UsersController extends AppController
             $this->Flash->error('E-mail ou senha inválidos.');
         }
     }
+
     public function logout()
     {
         $this->Authentication->logout();
