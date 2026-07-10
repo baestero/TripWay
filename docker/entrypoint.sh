@@ -29,7 +29,7 @@ echo "==> Running migrations..."
 bin/cake migrations migrate -c default || true
 
 echo "==> Running seed..."
-bin/cake migrations seed -c default
+bin/cake migrations seed --seed=UsersSeed
 
 echo "==> Starting Apache..."
 apache2-foreground
